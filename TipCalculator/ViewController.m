@@ -11,37 +11,44 @@
 @interface ViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextField *tipTextField;
-
 @property (weak, nonatomic) IBOutlet UITextField *billTextField;
 
+@property (weak, nonatomic) IBOutlet UILabel *percentageLabel;
 @property (weak, nonatomic) IBOutlet UILabel *displayLabel;
 @property (weak, nonatomic) IBOutlet UILabel *displayLabelTotal;
 
+@property (weak, nonatomic) IBOutlet UISlider *slider;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *tapGesture;
 
+@property (nonatomic) float tipAmount;
+@property (nonatomic) float tipPercentage;
+@property (nonatomic) float billAmount;
+@property (nonatomic) float totalAmount;
 
 @end
 
 @implementation ViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-
     self.tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)];
     [self.view addGestureRecognizer:self.tapGesture];
-    
 }
 
 - (IBAction)CalculateTipButtonPushed:(UIButton *)sender
 {
-    float billAmt = self.billTextField.text.integerValue;
-    float tipPercent = self.tipTextField.text.integerValue;
+    self.billAmount = self.billTextField.text.integerValue;
+    self.tipPercentage = self.tipTextField.text.integerValue;
     
-    float tipAmount = (tipPercent / 100) * billAmt;
-    float totalAmount = tipAmount + billAmt;
+    self.tipAmount = (self.tipPercentage / 100) * self.billAmount;
+    self.totalAmount = self.tipAmount + self.billAmount;
     
-    self.displayLabel.text = [NSString stringWithFormat:@"You should tip $%.2f", tipAmount];
-    self.displayLabelTotal.text = [NSString stringWithFormat:@"Your total is: $%.2f", totalAmount];
+    self.displayLabel.text = [NSString stringWithFormat:@"You should tip $%.2f", self.tipAmount];
+    self.displayLabelTotal.text = [NSString stringWithFormat:@"Your total is: $%.2f", self.totalAmount];
+    
+    self.billTextField.text = @"";
+    self.tipTextField.text = @"";
 
 }
 
@@ -50,10 +57,23 @@
     [self.view endEditing:YES];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+- (IBAction)sliderChangedValue:(UISlider *)sender
+{
+    self.billAmount = self.billTextField.text.integerValue;
 
+    if(self.billAmount > 0)
+    {
+        self.tipAmount = (self.slider.value / 100) * self.billTextField.text.integerValue;
+        self.totalAmount = self.tipAmount + self.billAmount;
+        
+        self.displayLabel.text = [NSString stringWithFormat:@"You should tip $%.2f", self.tipAmount];
+        self.displayLabelTotal.text = [NSString stringWithFormat:@"Your total is: $%.2f", self.totalAmount];
+        self.percentageLabel.text = [NSString stringWithFormat:@"%.1f%%", self.slider.value];
+    }
+    else
+    {
+        self.percentageLabel.text = @"Please enter bill amount";
+    }
+}
 
 @end

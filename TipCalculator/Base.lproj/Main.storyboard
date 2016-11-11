@@ -55,6 +55,15 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z0J-3I-YYD">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="39" id="f8w-gZ-Qaa"/>
+                                    <constraint firstAttribute="width" constant="209" id="sC8-x7-utp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bze-LS-Pl9">
                                 <color key="backgroundColor" red="0.38770187820000002" green="0.52101616579999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -69,12 +78,21 @@
                                     <action selector="CalculateTipButtonPushed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QTI-3F-ghZ"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z0J-3I-YYD">
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="YPB-qL-LIS">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="39" id="f8w-gZ-Qaa"/>
-                                    <constraint firstAttribute="width" constant="209" id="sC8-x7-utp"/>
+                                    <constraint firstAttribute="height" constant="30" id="I0d-Ob-Zvs"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <connections>
+                                    <action selector="sliderChangedValue:" destination="BYZ-38-t0r" eventType="valueChanged" id="VRX-9W-4o0"/>
+                                </connections>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wal-iQ-c97">
+                                <frame key="frameInset" minX="37" minY="520" width="282" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="9dq-gp-RzJ"/>
+                                    <constraint firstAttribute="width" constant="282" id="a6z-vV-dsT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -85,10 +103,16 @@
                             <constraint firstItem="0Sb-PY-8EP" firstAttribute="top" secondItem="stz-CV-903" secondAttribute="bottom" constant="17" id="1KY-21-rkx"/>
                             <constraint firstItem="HOV-um-cyp" firstAttribute="top" secondItem="bze-LS-Pl9" secondAttribute="bottom" constant="49" id="5y9-Dm-t57"/>
                             <constraint firstItem="stz-CV-903" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="5zO-Fo-97F"/>
+                            <constraint firstItem="wal-iQ-c97" firstAttribute="top" secondItem="YPB-qL-LIS" secondAttribute="bottom" constant="35" id="Lfx-ot-ReG"/>
+                            <constraint firstItem="YPB-qL-LIS" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="40" id="RDz-bp-J8N"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="YPB-qL-LIS" secondAttribute="trailing" constant="40" id="SQv-3C-kOq"/>
+                            <constraint firstItem="YPB-qL-LIS" firstAttribute="top" secondItem="z0J-3I-YYD" secondAttribute="bottom" constant="71" id="VLr-qr-rI4"/>
                             <constraint firstItem="z0J-3I-YYD" firstAttribute="top" secondItem="HOV-um-cyp" secondAttribute="bottom" constant="8" id="WRF-cb-3Xt"/>
                             <constraint firstItem="z0J-3I-YYD" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="cRL-Rl-g7s"/>
+                            <constraint firstItem="YPB-qL-LIS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fm7-SC-jjT"/>
                             <constraint firstItem="bze-LS-Pl9" firstAttribute="top" secondItem="4xv-7K-W8R" secondAttribute="bottom" constant="30" id="hea-Lp-9IX"/>
                             <constraint firstItem="4xv-7K-W8R" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="i31-tw-SMq"/>
+                            <constraint firstItem="wal-iQ-c97" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="mCB-ek-xNE"/>
                             <constraint firstItem="0Sb-PY-8EP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="mgY-Vm-P3z"/>
                             <constraint firstItem="4xv-7K-W8R" firstAttribute="top" secondItem="0Sb-PY-8EP" secondAttribute="bottom" constant="28" id="n5v-7K-7YR"/>
                             <constraint firstItem="stz-CV-903" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="19" id="pgZ-bU-3lm"/>
@@ -103,6 +127,8 @@
                         <outlet property="billTextField" destination="4xv-7K-W8R" id="Inl-pj-yoR"/>
                         <outlet property="displayLabel" destination="HOV-um-cyp" id="NWT-3Y-lM0"/>
                         <outlet property="displayLabelTotal" destination="z0J-3I-YYD" id="a6S-2V-bM5"/>
+                        <outlet property="percentageLabel" destination="wal-iQ-c97" id="DXb-9X-bVb"/>
+                        <outlet property="slider" destination="YPB-qL-LIS" id="Bgw-MJ-6Yn"/>
                         <outlet property="tapGesture" destination="XRQ-L7-cGf" id="Y3e-He-Bel"/>
                         <outlet property="tipTextField" destination="0Sb-PY-8EP" id="HTS-Od-Rm0"/>
                     </connections>
