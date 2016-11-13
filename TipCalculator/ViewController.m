@@ -14,8 +14,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *billTextField;
 
 @property (weak, nonatomic) IBOutlet UILabel *percentageLabel;
-@property (weak, nonatomic) IBOutlet UILabel *displayLabel;
-@property (weak, nonatomic) IBOutlet UILabel *displayLabelTotal;
+@property (weak, nonatomic) IBOutlet UILabel *tipLabel;
+@property (weak, nonatomic) IBOutlet UILabel *totalLabel;
 
 @property (weak, nonatomic) IBOutlet UISlider *slider;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *tapGesture;
@@ -34,6 +34,7 @@
     [super viewDidLoad];
     self.tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)];
     [self.view addGestureRecognizer:self.tapGesture];
+    
 }
 
 - (IBAction)CalculateTipButtonPushed:(UIButton *)sender
@@ -44,8 +45,8 @@
     self.tipAmount = (self.tipPercentage / 100) * self.billAmount;
     self.totalAmount = self.tipAmount + self.billAmount;
     
-    self.displayLabel.text = [NSString stringWithFormat:@"You should tip $%.2f", self.tipAmount];
-    self.displayLabelTotal.text = [NSString stringWithFormat:@"Your total is: $%.2f", self.totalAmount];
+    self.tipLabel.text = [NSString stringWithFormat:@"$%.2f", self.tipAmount];
+    self.totalLabel.text = [NSString stringWithFormat:@"$%.2f", self.totalAmount];
     
     self.billTextField.text = @"";
     self.tipTextField.text = @"";
@@ -66,8 +67,8 @@
         self.tipAmount = (self.slider.value / 100) * self.billTextField.text.integerValue;
         self.totalAmount = self.tipAmount + self.billAmount;
         
-        self.displayLabel.text = [NSString stringWithFormat:@"You should tip $%.2f", self.tipAmount];
-        self.displayLabelTotal.text = [NSString stringWithFormat:@"Your total is: $%.2f", self.totalAmount];
+        self.tipLabel.text = [NSString stringWithFormat:@"$%.2f", self.tipAmount];
+        self.totalLabel.text = [NSString stringWithFormat:@"$%.2f", self.totalAmount];
         self.percentageLabel.text = [NSString stringWithFormat:@"%.1f%%", self.slider.value];
     }
     else
